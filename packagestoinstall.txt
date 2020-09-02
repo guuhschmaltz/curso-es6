@@ -1,0 +1,4 @@
+yarn install
+yarn add @babel/cli
+yarn add @babel/preset-env
+yarn add @babel/core

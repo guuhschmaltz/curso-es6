@@ -1,0 +1,16 @@
+{
+  "name": "curso-es6-js",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/guuhschmaltz/curso-es6.git",
+  "author": "Gustavo Schmaltz <guuhschmaltz@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/cli": "^7.11.5",
+    "@babel/core": "^7.11.5",
+    "@babel/preset-env": "^7.11.5"
+  },
+  "scripts": {
+    "dev": "babel ./main.js -o ./bundle.js -w"
+  }
+}

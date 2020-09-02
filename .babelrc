@@ -1,0 +1,5 @@
+//configurando o preset-env para entender o ambiente em que trabalhamos
+//no caso o browser, mas poderia ser utilizado para node, react native etc.
+{
+    "presets": ["@babel/preset-env"]
+}
