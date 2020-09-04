@@ -1,50 +1,31 @@
 "use strict";
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+//Aula de Valores Padrão
+function soma(a, b) {
+  return a + b;
+}
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+console.log(soma(1));
+console.log(soma()); // Essa função sem passar os dois parametros retorna NAN
+//No caso não funciona pois devemos passar os dois parametros para somar.
+//Devemos definir valores padrão da seguinte forma:
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function soma2() {
+  var a = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  var b = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  return a + b;
+}
 
-var TodoList = /*#__PURE__*/function () {
-  function TodoList() {
-    _classCallCheck(this, TodoList);
+console.log(soma2());
+console.log(soma2(5));
+console.log(soma2(5, 5)); //Também conseguimos utilizar valores padrão para arrow functions, dessa forma:
 
-    this.todos = [];
-  }
+var soma3 = function soma3() {
+  var a = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  var b = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  return a + b;
+};
 
-  _createClass(TodoList, null, [{
-    key: "addTodo",
-    value: function addTodo() {
-      this.todos.push('Novo Todo');
-      console.log(this.todos);
-    }
-  }]);
-
-  return TodoList;
-}(); // TodoList.addTodo(); //Sem utilizar o new, acontecerá o erro porquê:
-//Quando definimos um método estático, ele não enxerga o restante da classe
-//Ele não enxergará o this.todos.
-//Toda vez que tivermos esse método estático, ele basicamente servirá para passarmos uma informação
-//e retornarmos outra informação independente do restante da classe.
-//Geralmente quando tivermos métodos estáticos em uma classe, nem teremos constructors,
-//Será uma classe para nos ajudar com alguma funcionalidade que queremos implementar.
-//Exemplo abaixo sem o construtor que funciona:
-
-
-var Matematica = /*#__PURE__*/function () {
-  function Matematica() {
-    _classCallCheck(this, Matematica);
-  }
-
-  _createClass(Matematica, null, [{
-    key: "soma",
-    value: function soma(a, b) {
-      return a + b;
-    }
-  }]);
-
-  return Matematica;
-}();
-
-console.log(Matematica.soma(1, 2));
+console.log(soma3(12, 12));
+console.log(soma3());
+console.log(soma3(11));

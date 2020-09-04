@@ -1,27 +1,24 @@
-class TodoList{
-    constructor(){
-        this.todos = [];
-    }
-
-    static addTodo(){
-        this.todos.push('Novo Todo');
-        console.log(this.todos);
-    }
+//Aula de Valores Padrão
+function soma(a,b){
+    return a + b;
 }
 
-// TodoList.addTodo(); //Sem utilizar o new, acontecerá o erro porquê:
-                    //Quando definimos um método estático, ele não enxerga o restante da classe
-                    //Ele não enxergará o this.todos.
-                    //Toda vez que tivermos esse método estático, ele basicamente servirá para passarmos uma informação
-                    //e retornarmos outra informação independente do restante da classe.
-                    //Geralmente quando tivermos métodos estáticos em uma classe, nem teremos constructors,
-                    //Será uma classe para nos ajudar com alguma funcionalidade que queremos implementar.
-                    //Exemplo abaixo sem o construtor que funciona:
+console.log(soma(1));
+console.log(soma()); // Essa função sem passar os dois parametros retorna NAN
+                    //No caso não funciona pois devemos passar os dois parametros para somar.
+//Devemos definir valores padrão da seguinte forma:
 
-                    class Matematica{
-                        static soma(a,b){
-                            return a + b;
-                        }
-                    }
+function soma2(a = 0, b = 0){
+    return a + b;
+}
+console.log(soma2());
+console.log(soma2(5));
+console.log(soma2(5,5));
 
-                    console.log(Matematica.soma(1,2));
+//Também conseguimos utilizar valores padrão para arrow functions, dessa forma:
+
+const soma3 = (a = 0, b = 0) => a + b;
+console.log(soma3(12,12));
+console.log(soma3());
+console.log(soma3(11));
+
