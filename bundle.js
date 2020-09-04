@@ -1,34 +1,16 @@
 "use strict";
 
-//Desestruturação de Códigos
+//Object Short Syntax
+//Exemplo de como passar informações de variaveis para dentro de um usuário
+var nome = 'Gustavo';
+var idade = 23;
 var usuario = {
-  nome: 'Gustavo',
-  idade: 20,
-  endereco: {
-    cidade: 'Cotia',
-    estado: 'São Paulo'
-  }
+  //nome: nome,
+  nome: nome,
+  //idade: idade,
+  idade: idade,
+  //Quando a propriedade que for criada para o objeto tiver o mesmo nome que a variavel,
+  //É conhecido como sintaxe curta ou short syntax, uma sintaxe que o ES6 nos proporciona.
+  empresa: 'Evolve Box'
 };
-var nome = usuario.nome,
-    idade = usuario.idade,
-    _usuario$endereco = usuario.endereco,
-    cidade = _usuario$endereco.cidade,
-    estado = _usuario$endereco.estado;
-console.log(nome);
-console.log(idade);
-console.log(cidade);
-console.log(estado); //Exibindo no console usando a Desestruturação de códigos
-//Função que normalmente recuperiariamos o nome
-
-function mostraNome(usuario) {
-  console.log(usuario.nome);
-}
-
-mostraNome(usuario); //Função que recupera o nome utilizando a desestruturação
-
-function mostraNome2(_ref) {
-  var nome = _ref.nome;
-  console.log(nome);
-}
-
-mostraNome2(usuario);
+console.log(usuario);
