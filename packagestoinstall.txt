@@ -3,3 +3,11 @@ yarn add @babel/cli
 yarn add @babel/preset-env
 yarn add @babel/core
 yarn add @babel/plugin-proposal-object-rest-spread
+
+yarn add webpack webpack-cli-D
+yarn add babel-loader@8.0.0-beta.0 -D
+yarn add webpack-dev-server -D
+
+quando eu quiser jogar o projeto online executar:
+
+webpack --mode-production (exporta um bundle fisico)
