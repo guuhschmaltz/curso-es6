@@ -11,3 +11,8 @@ yarn add webpack-dev-server -D
 quando eu quiser jogar o projeto online executar:
 
 webpack --mode-production (exporta um bundle fisico)
+
+instalando async await
+
+yarn add @babel/plugin-transform-async-to-generator -D
+yarn add @babel/polyfill -D
