@@ -16,3 +16,7 @@ instalando async await
 
 yarn add @babel/plugin-transform-async-to-generator -D
 yarn add @babel/polyfill -D
+
+instalando axios
+
+yarn add axios
