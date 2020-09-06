@@ -11,8 +11,20 @@ setTimeout(() => { resolve('OK')}, 2000);
 //})
 
 async function executaPromise(){
-    const response = await minhaPromise();
-    console.log(response);
+    console.log(await minhaPromise());
+    console.log(await minhaPromise());
+    console.log(await minhaPromise());
 }
 
-executaPromise();
+//executaPromise();
+
+
+//transformando essa função assincrona em arrow function
+
+const executaPromise2 = async () => {
+    console.log(await minhaPromise());
+    console.log(await minhaPromise());
+    console.log(await minhaPromise());
+};
+
+executaPromise2();
