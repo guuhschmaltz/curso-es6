@@ -1,9 +1,12 @@
+import api from './api'; //Importando o arquivo api.js
+
 class App {
     constructor(){
         this.repositories = [];
 
         this.formEl = document.getElementById('repo-form');
         this.listEl = document.getElementById('repo-list');
+        this.inputEl = document.querySelector('input[name=repository]'); //Buscando input do html com o nome do repositório
 
         this.registerHandlers();
     }
@@ -12,17 +15,45 @@ class App {
         this.formEl.onsubmit = event => this.addRepository(event); 
     }
 
-    addRepository(event){
+    setLoading(loading = true) { //Função que faz um span escrito "carregando"
+        if(loading === true){
+            let loadingEl = document.createElement('span');
+            loadingEl.appendChild(document.createTextNode('Carregando'));
+            loadingEl.setAttribute('id', 'loading');
+
+            this.formEl.appendChild(loadingEl);
+        } else {
+            document.getElementById('loading').remove();
+        }
+    }
+
+    async addRepository(event){
         event.preventDefault();
 
-        this.repositories.push({
-            name: 'rocketseat.com.br',
-            description: 'Tire a sua ideia do papel e dê vida a sua startup.',
-            avatar_url: 'https://avatars0.githubusercontent.com/u/28929274?v=4',
-            html_url: 'http://github.com/rocketseat/',
-        });
+        const repoInput = this.inputEl.value; //Pegando o que foi digitado no input
+        if (repoInput.length === 0)
+            return; //Verificando se o que está no imput é vazio
 
-        this.render();
+        this.setLoading(); //Chamando a função loading
+
+        try{
+            const response = await api.get(`/repos/${repoInput}`);
+
+            const { name , description , html_url, owner: { avatar_url } } = response.data; //Desestruturando o que foi buscado da api;
+    
+            this.repositories.push({
+                name, // poderia deixar dessa forma: name: name, etc.
+                description,
+                avatar_url,
+                html_url,
+            }); //Dando push utilizando short syntax
+    
+            this.render();
+        } catch (err){
+            alert('O repositório não existe');
+        }
+        
+        this.setLoading(false); //Removendo o loading da tela
     }
 
     render(){
@@ -41,7 +72,7 @@ class App {
             descriptionEl.appendChild(document.createTextNode(repo.description));
 
             let linkEl = document.createElement('a'); // Criando tag a
-            linkEl.setAttribute('taget', '_blank'); //Abrir em nova aba
+            linkEl.setAttribute('href', repo.html_url); //Abrir em nova aba
             linkEl.appendChild(document.createTextNode('Acessar'));
 
             let listItemEl = document.createElement('li'); // Criando li
